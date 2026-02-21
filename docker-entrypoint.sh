@@ -8,6 +8,8 @@ do
 		EXTRA_FLAGS="${EXTRA_FLAGS} ${ARG} "
 	elif [ "$ARG" == "-x" ]; then
 		EXTRA_FLAGS="${EXTRA_FLAGS} ${ARG} "
+	elif ["$ARG" == "-p"]; then
+	    EXTRA_FLAGS="${EXTRA_FLAGS} ${ARG} "
 	elif [ "$ARG" == "-v" ] || [ "$ARG" == "-vv" ] || [ "$ARG" == "-vvv" ]; then
 		EXTRA_FLAGS="${EXTRA_FLAGS} ${ARG} "
 	else
@@ -18,6 +20,9 @@ done
 
 if [ ! -z "$PROXY_SERVER" ]; then
 	EXTRA_FLAGS="${EXTRA_FLAGS} -t ${PROXY_SERVER} "
+fi
+if [ ! -z "$LISTEN_PORT" ]; then
+	EXTRA_FLAGS="${EXTRA_FLAGS} -t ${LISTEN_PORT} "
 fi
 if [ ! -z "$DSCP_CODEPOINT" ]; then
 	EXTRA_FLAGS="${EXTRA_FLAGS} -c ${DSCP_CODEPOINT} "
